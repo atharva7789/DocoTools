@@ -1,0 +1,7 @@
+uploads/
+venv/
+.git/
+.github/
+__pycache__/
+*.pyc
+.DS_Store
