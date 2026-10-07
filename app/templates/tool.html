@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }} — DocoTools</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<header class="nav">
+<a class="brand" href="/"><span class="logo-mark"><span class="logo-d">D</span><i></i></span><b>Doco<span>Tools</span></b></a>
+<a class="back" href="/">← Back to DocoTools</a>
+</header>
+<main class="tool-page">
+<section class="tool-shell">
+  <div class="tool-title"><div class="big-icon">{{ "AI" if tool=="summarizer" else "PDF" }}</div><h1>{{ title }}</h1><p>{{ description }}</p></div>
+  <div class="dropzone" id="dropzone">
+    <div class="upload-symbol">↑</div>
+    <h2>Drop your file here</h2><p>or choose files from your computer</p>
+    <label class="btn primary" for="files">Choose files</label>
+    <input id="files" type="file" multiple hidden>
+    <small id="hint"></small>
+  </div>
+  <div id="filelist"></div>
+  <button class="btn primary wide" id="process" disabled>{{ title }}</button>
+  <div class="status" id="status"></div>
+  <div class="result" id="result" hidden>
+    <div class="ok">✓</div><h2>Done</h2><p>Your result is ready.</p>
+    <a id="download" class="btn primary" href="#">Download result</a>
+    <button id="delete" class="btn danger">🗑 Delete your file</button>
+    <p class="privacy-note">Your job folder can be deleted from DocoTools storage at any time.</p>
+  </div>
+</section>
+</main>
+<script>
+window.DOCO_TOOL = {{ tool|tojson }};
+</script>
+<script src="{{ url_for('static', filename='js/tool.js') }}"></script>
+</body>
+</html>

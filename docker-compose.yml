@@ -1,0 +1,9 @@
+services:
+  docotools:
+    build: .
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./uploads:/app/uploads
+    environment:
+      - FLASK_ENV=production

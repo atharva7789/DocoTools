@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DocoTools — Online PDF & Document Utility Platform</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="/"><span class="logo-mark"><span class="logo-d">D</span><i></i></span><b>Doco<span>Tools</span></b></a>
+  <nav>
+    <a href="#tools">PDF Tools</a>
+    <a href="#tools">Convert</a>
+    <a href="#ai">AI Tools</a>
+    <a href="#features">Features</a>
+    <a href="#">Login</a>
+    <a class="signup" href="#">Sign up</a>
+    <select id="language" aria-label="Language" data-i18n="language">
+      <option value="en">English</option><option value="hi">हिन्दी</option>
+      <option value="mr">मराठी</option><option value="es">Español</option>
+      <option value="fr">Français</option><option value="de">Deutsch</option>
+      <option value="ja">日本語</option><option value="ar">العربية</option><option value="zh">中文</option><option value="pt">Português</option><option value="ko">한국어</option><option value="it">Italiano</option><option value="ru">Русский</option><option value="tr">Türkçe</option><option value="bn">বাংলা</option>
+    </select>
+  </nav>
+</header>
+
+<main><div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+<section class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow">• Simple tools. Smarter documents.</span>
+    <h1>Everything you need <em>for your documents.</em></h1>
+    <p>Convert, organize, compress and work with your PDF and document files from one simple platform.</p>
+    <div class="actions">
+      <a class="btn primary" href="#tools">Explore tools →</a>
+      <a class="btn ghost" href="#privacy">Learn about privacy</a>
+    </div>
+    <div class="privacy" id="privacy"><b>✓ Your Files. Your Privacy. Always.</b><br><span>Files are processed temporarily and can be deleted from DocoTools storage when you're done.</span></div>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+    <div class="paper back"></div>
+    <div class="paper toss"><div class="fold"></div><strong>PDF</strong><small>Your document</small></div>
+    <div class="hand">🤲</div>
+    <div class="float-badge b1">↔ Merge PDF<br><small>Ready</small></div>
+    <div class="float-badge b2">✓ Secure processing<br><small>Privacy first</small></div>
+  </div>
+</section>
+
+<section class="tools-section" id="tools">
+  <div class="section-head"><div><label>DOCUMENT TOOLS</label><h2>Powerful tools, <span>without the complexity.</span></h2></div><p>Choose a tool, upload your file and let DocoTools handle the rest.</p></div>
+  <div class="filters"><button class="active">All tools</button><button>Organize PDF</button><button>Convert</button><button>AI Tools</button></div>
+  <div class="grid">
+    {% for key, item in tools.items() %}
+      <a class="tool-card" href="/tool/{{ key }}" id="{{ key }}">
+        <div class="tool-icon">{{ "AI" if key=="summarizer" else key.split("-")[0].upper() }}</div>
+        <div><h3>{{ item[0] }}</h3><p>{{ item[1] }}</p></div><span class="arrow">→</span>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="feature-strip" id="features">
+  <div><b>Secure temporary processing</b><span>Files stay in a job folder and source uploads are removed after processing.</span></div>
+  <div><b>One-click deletion</b><span>Delete your generated result and its job folder whenever you're finished.</span></div>
+  <div id="ai"><b>AI-powered summaries</b><span>Create a concise summary from readable PDF text without sending the document to a third party.</span></div>
+</section>
+</main>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
