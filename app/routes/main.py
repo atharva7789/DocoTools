@@ -17,6 +17,9 @@ import subprocess
 import tempfile
 
 main = Blueprint("main", __name__)
+@main.get("/health")
+def health():
+    return jsonify({"status": "healthy"}), 200
 
 ALLOWED = {
     "merge": {".pdf"},
